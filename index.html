@@ -3,21 +3,33 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Lorem ipsum dolor sit amet</title>
-    <link rel="stylesheet" href="/newtitles/output.css">
+    <title>Rock, Paper, Scissors Simulator</title>
+    <link rel="stylesheet" href="nontail.css">
+<!--    <link rel="stylesheet" href="/newtitles/output.css"> -->
 </head>
 
 <body>
-    <header>
-        <h1>Lorem Ipsum News</h1>
-        <p>“All the news that’s fit to <em>consectetur adipiscing elit</em>”</p>
-    </header>
+  <div id= "gameTitle">
+    <h1 class="titleTEXT1">Rock, Paper, Scissors</h1>
+    <h3 class="titleTEXT2">Current Score</h3>
+    <h4 class="scoreTEXT" id="userText">User: </h4>
+    <h4 class="scoreTEXT" id="cpuText">CPU:  </h4>
+  </div>
 
-    <main>
+  <div id= "gamePlay">
+    <button class="chooser" id="ROCK">ROCK</button>
+    <button class="chooser" id="PAPER">PAPER</button>
+    <button class="chooser" id="SCISSORS">SCISSORS</button>
+  </div>
 
-    </main>
+  <div id= "gameHistory">
+    <h2 class="footTEXT1">History: </h2>
+  </div>
 
-    <script type="module" src="game.js"></script>
+  <main>
+    <!-- Inside main is where history will be generated -->
+  </main>
+  <script type="module" src="game.js"></script>
 </body>
 
 </html>
