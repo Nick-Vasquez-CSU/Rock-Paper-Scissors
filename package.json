@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "tailwindcss": "^3.2.4"
+  },
+  "scripts": {
+    "tailwind": "tailwindcss -i titles.css -o ./newtitles/output.css --watch",
+    "start": "browser-sync --files 'index.html' --parallel tailwind"
   }
 }
