@@ -13,6 +13,7 @@ let gamesPlayed = 1;
 let userScore = 0;
 let cpuScore = 0;
 
+// Initialize round number to 1 and user scores to 0
 const roundNumber = document.querySelector("#roundNumber")
 if (gamesPlayed == "1"){
   roundNumber.textContent = 1
@@ -25,7 +26,7 @@ if (gamesPlayed == "1"){
 
 
 
-
+// Upon clicking the rock paper scissors images
 playButtons.forEach(button => button.addEventListener("click", () => {
 
   userPLAY = button.id;
@@ -34,6 +35,7 @@ playButtons.forEach(button => button.addEventListener("click", () => {
 
 }));
 
+// Calculate cpu choice
 function cpuTurn(){
   const randNum = Math.floor(Math.random() * 3) + 1;
 
@@ -50,17 +52,20 @@ function cpuTurn(){
   }
 }
 
+// Generate the game results
 function generateResults(){
   const gameState = document.createElement("article")
 
+  
   const totalText = document.createElement("h5")
   totalText.textContent = gamesPlayed;
   gameState.appendChild(totalText);
   gamesPlayed += 1;
 
-  
+  // Set the round number in top left corner to the number of games played
   roundNumber.textContent = gamesPlayed
 
+  // Current score counter in top left
   const userR = document.createElement("h5")
   userR.textContent = `User Played: ${userPLAY}`;
   gameState.appendChild(userR);
@@ -70,11 +75,14 @@ function generateResults(){
   gameState.appendChild(cpuR);
   dDoc.appendChild(gameState);
 
+
+  // Text under RPS images that tell user what they picked and what the cpu picked
   const userPlayed = document.querySelector("#userPick")
   const cpuPlayed = document.querySelector("#cpuPick")
   userPlayed.textContent = `You Played: ${userPLAY}`;
   cpuPlayed.textContent = `CPU Played: ${cpuPLAY}`;
 
+  // Determine who won, and increment score counters
   const results = document.querySelector("#results")
   if (userPLAY === "Rock" && cpuPLAY == "Scissors" || userPLAY === "Scissors" && cpuPLAY == "Paper" || userPLAY === "Paper" && cpuPLAY == "Rock"){
     resultText = "You win!";
@@ -88,6 +96,7 @@ function generateResults(){
     resultText = "You Tied!"; 
   }
   
+  // Set the text to 'you win', 'you lose' or 'you tied'
   results.textContent = resultText;
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
