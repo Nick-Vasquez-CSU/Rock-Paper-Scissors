@@ -4,26 +4,41 @@
 <head>
     <meta charset="utf-8">
     <title>Rock, Paper, Scissors Simulator</title>
-    <link rel="stylesheet" href="nontail.css">
-<!--    <link rel="stylesheet" href="/newtitles/output.css"> -->
+    <!-- <link rel="stylesheet" href="nontail.css"> -->
+    <link rel="stylesheet" href="/newtitles/output.css">
 </head>
 
-<body>
+<body class="px-6 md:px-24 xl:px-52">
+  <!-- Round and score counters in top left corner -->
   <div id= "gameTitle">
-    <h1 class="titleTEXT1">Rock, Paper, Scissors</h1>
-    <h3 class="titleTEXT2">Current Score</h3>
-    <h4 class="scoreTEXT" id="userText">User: </h4>
-    <h4 class="scoreTEXT" id="cpuText">CPU:  </h4>
+    <h1 class="titleTEXT1 mt-6 p-6 text-center text-4xl font-bold">Rock, Paper, Scissors</h1>
+    <h3 class="text-xl font-semibold">Round <span id="roundNumber"></span></h3>
+    <h3 class="titleTEXT2 text-xl">Current Score</h3>
+    <h4 class="scoreTEXT text-xl">User: <span id="userText"></span></h4>
+    <h4 class="scoreTEXT text-xl">CPU: <span id="cpuText"></span></h4>
+  </div> 
+
+  <!-- Rock paper scissors images -->
+  <h4 class="flex justify-center items-center text-xl mt-5">Make your selection by clicking below!</h4>
+  <div id= "gamePlay" class="flex justify-center items-center p-1 space-x-24 px-5 py-5">
+    <button class="chooser" id="Rock"><img class="h-64" src="assets/images/Rock.png"/></button>
+    <button class="chooser" id="Paper"><img class="h-64" src="assets/images/Paper.png"/></button>
+    <button class="chooser" id="Scissors"><img class="h-64" src="assets/images/Scissors.png"/></button>
   </div>
 
-  <div id= "gamePlay">
-    <button class="chooser" id="ROCK">ROCK</button>
-    <button class="chooser" id="PAPER">PAPER</button>
-    <button class="chooser" id="SCISSORS">SCISSORS</button>
+  <!-- 'You played' and 'CPU played' text -->
+  <div id= "picks" class="flex justify-center items-center space-x-20 px-20 py-5">
+    <h3 class="text-xl" id="userPick"></h3>
+    <h3 class="text-xl" id="cpuPick"></h3>
+  </div>
+  <!-- Game result text -->
+  <div class="flex justify-center items-center space-x-20 px-20 py-5">
+    <h3 class="text-xl" id="results"></h3>
   </div>
 
+  <!-- Game history -->
   <div id= "gameHistory">
-    <h2 class="footTEXT1">History: </h2>
+    <h2 class="footTEXT1 text-lg">History: </h2>
   </div>
 
   <main>
