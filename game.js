@@ -1,23 +1,30 @@
-const userText = document.querySelector('#userText') // Score
-const cpuText = document.querySelector('#cpuText') // Score
-const playButtons = document.querySelectorAll('.chooser')
-const dDoc = document.querySelector('main')
+const userText = document.querySelector("#userText"); //Score
+const cpuText = document.querySelector("#cpuText"); //Score
+const playButtons = document.querySelectorAll(".chooser");
 
-let userPLAY
-let cpuPLAY
-let resultText
-let gamesPlayed
-let userScore
-let cpuScore
-let localStorage
+const dDoc = document.querySelector("main")
+const endBody = document.querySelector("body")
 
-if (localStorage.getItem('GAMEstate') == null) {
-  gamesPlayed = 1
-  userScore = 0
-  cpuScore = 0
-  localStorage.setItem('GAMEstate', gamesPlayed)
-  localStorage.setItem('USERscore', userScore)
-  localStorage.setItem('CPUscore', cpuScore)
+
+let userPLAY;
+let cpuPLAY;
+let resultText;
+let gamesPlayed;
+let userScore;
+let cpuScore;
+
+if (localStorage.getItem("GAMEstate") == null){
+  localStorage.clear();
+  gamesPlayed = 1;
+  userScore = 0;
+  cpuScore = 0;
+
+  gameHistory.gamesPlayed = localStorage.setItem("GAMEstate", gamesPlayed);
+  localStorage.setItem("USERscore", userScore);
+  localStorage.setItem("CPUscore", cpuScore);
+  localStorage.setItem("History",)
+
+
 } else {
   gamesPlayed = localStorage.getItem('GAMEstate')
   userScore = localStorage.getItem('USERscore')
@@ -26,7 +33,7 @@ if (localStorage.getItem('GAMEstate') == null) {
 
 // Initialize round number to 1 and user scores to 0
 const roundNumber = document.querySelector('#roundNumber')
-if (gamesPlayed === '1') {
+if (gamesPlayed === 1) {
   roundNumber.textContent = 1
   userText.textContent = 0
   cpuText.textContent = 0
@@ -34,17 +41,24 @@ if (gamesPlayed === '1') {
   roundNumber.textContent = gamesPlayed
   userText.textContent = userScore
   cpuText.textContent = cpuScore
+
 }
 
 // Upon clicking the rock paper scissors images
-playButtons.forEach(button => button.addEventListener('click', () => {
-  userPLAY = button.id
-  cpuTurn()
-  generateResults()
-  localStorage.setItem('GAMEstate', gamesPlayed)
-  localStorage.setItem('USERscore', userScore)
-  localStorage.setItem('CPUscore', cpuScore)
+
+playButtons.forEach(button => button.addEventListener("click", () => {
+
+  userPLAY = button.id;
+  cpuTurn();
+  generateResults();
+  localStorage.setItem("GAMEstate", gamesPlayed);
+  gameHistory.gamesPlayed=localStorage.setItem("GAMEstate", gamesPlayed);
+  localStorage.setItem("USERscore", userScore);
+  gameHistory.userScore = localStorage.setItem("USERscore", userScore);
+  localStorage.setItem("CPUscore", cpuScore);
+  gameHistory.cpuScore = localStorage.setItem("CPUscore", cpuScore);
   console.log()
+  
 }))
 
 // Calculate cpu choice
@@ -63,15 +77,22 @@ function cpuTurn () {
       break
   }
 }
-
+const gameHistory = { //object that holds all the game history
+  userPLAY,
+  cpuPLAY,
+  resultText,
+  gamesPlayed,
+  userScore,
+  cpuScore,
+};
 // Generate the game results
 function generateResults () {
   const gameState = document.createElement('article')
+  const totalText = document.createElement("h5")
+  totalText.textContent = gamesPlayed;
+  gameState.appendChild(totalText);
+  gamesPlayed++;
 
-  const totalText = document.createElement('h5')
-  totalText.textContent = gamesPlayed
-  gameState.appendChild(totalText)
-  gamesPlayed += 1
 
   // Set the round number in top left corner to the number of games played
   roundNumber.textContent = gamesPlayed
@@ -87,10 +108,12 @@ function generateResults () {
   dDoc.appendChild(gameState)
 
   // Text under RPS images that tell user what they picked and what the cpu picked
-  const userPlayed = document.querySelector('#userPick')
-  const cpuPlayed = document.querySelector('#cpuPick')
-  userPlayed.textContent = `You Played: ${userPLAY}`
-  cpuPlayed.textContent = `CPU Played: ${cpuPLAY}`
+
+  const userPlayed = document.querySelector("#userPick")
+  const cpuPlayed = document.querySelector("#cpuPick")
+  userPlayed.textContent = `You Played: ${userPLAY}`;
+  gameHistory.userPLAY=   userPlayed.textContent;
+  cpuPlayed.textContent = `CPU Played: ${cpuPLAY}`;
 
   // Determine who won, and increment score counters
   const results = document.querySelector('#results')
@@ -105,7 +128,9 @@ function generateResults () {
   }
 
   // Set the text to 'you win', 'you lose' or 'you tied'
-  results.textContent = resultText
-  userText.textContent = userScore
-  cpuText.textContent = cpuScore
+
+  results.textContent = resultText;
+  userText.textContent = userScore;
+  cpuText.textContent = cpuScore;
+  
 }
