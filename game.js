@@ -19,9 +19,10 @@ if (localStorage.getItem("GAMEstate") == null){
   userScore = 0;
   cpuScore = 0;
 
-  localStorage.setItem("GAMEstate", gamesPlayed);
+  gameHistory.gamesPlayed = localStorage.setItem("GAMEstate", gamesPlayed);
   localStorage.setItem("USERscore", userScore);
   localStorage.setItem("CPUscore", cpuScore);
+  localStorage.setItem("History",)
 
 } else {
   gamesPlayed = localStorage.getItem("GAMEstate");
@@ -31,13 +32,13 @@ if (localStorage.getItem("GAMEstate") == null){
 
 // Initialize round number to 1 and user scores to 0
 const roundNumber = document.querySelector("#roundNumber")
-if (gamesPlayed == 1){
-  roundNumber.textContent = 1
+if (gamesPlayed == '1'){
+  roundNumber.textContent = 1;
   userText.textContent = 0;
   cpuText.textContent = 0;
 
 } else {
-  roundNumber.textContent = gamesPlayed
+  roundNumber.textContent = gamesPlayed;
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
 }
@@ -51,8 +52,12 @@ playButtons.forEach(button => button.addEventListener("click", () => {
   cpuTurn();
   generateResults();
   localStorage.setItem("GAMEstate", gamesPlayed);
+  gameHistory.gamesPlayed=localStorage.setItem("GAMEstate", gamesPlayed);
   localStorage.setItem("USERscore", userScore);
+  gameHistory.userScore = localStorage.setItem("USERscore", userScore);
   localStorage.setItem("CPUscore", cpuScore);
+  gameHistory.cpuScore = localStorage.setItem("CPUscore", cpuScore);
+
   console.log()
 
 
@@ -74,7 +79,14 @@ function cpuTurn(){
       break;
   }
 }
-
+const gameHistory = { //object that holds all the game history
+  userPLAY,
+  cpuPLAY,
+  resultText,
+  gamesPlayed,
+  userScore,
+  cpuScore,
+};
 // Generate the game results
 function generateResults(){
   const gameState = document.createElement("article")
@@ -103,6 +115,7 @@ function generateResults(){
   const userPlayed = document.querySelector("#userPick")
   const cpuPlayed = document.querySelector("#cpuPick")
   userPlayed.textContent = `You Played: ${userPLAY}`;
+  gameHistory.userPLAY=   userPlayed.textContent;
   cpuPlayed.textContent = `CPU Played: ${cpuPLAY}`;
 
   // Determine who won, and increment score counters
@@ -123,7 +136,7 @@ function generateResults(){
   results.textContent = resultText;
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
-
+  
 
 
 
