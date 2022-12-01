@@ -14,6 +14,7 @@ let userScore;
 let cpuScore;
 
 if (localStorage.getItem("GAMEstate") == null){
+  localStorage.clear();
   gamesPlayed = 1;
   userScore = 0;
   cpuScore = 0;
@@ -82,7 +83,7 @@ function generateResults(){
   const totalText = document.createElement("h5")
   totalText.textContent = gamesPlayed;
   gameState.appendChild(totalText);
-  gamesPlayed += 1;
+  gamesPlayed++;
 
   // Set the round number in top left corner to the number of games played
   roundNumber.textContent = gamesPlayed;
