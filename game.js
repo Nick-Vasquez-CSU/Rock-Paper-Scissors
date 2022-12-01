@@ -30,7 +30,7 @@ if (localStorage.getItem("GAMEstate") == null){
 
 // Initialize round number to 1 and user scores to 0
 const roundNumber = document.querySelector("#roundNumber")
-if (gamesPlayed == "1"){
+if (gamesPlayed == 1){
   roundNumber.textContent = 1
   userText.textContent = 0;
   cpuText.textContent = 0;
