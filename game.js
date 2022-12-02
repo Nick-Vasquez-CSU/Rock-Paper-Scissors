@@ -21,7 +21,7 @@ if (localStorage.getItem("GAMEstate") == null){
   
   localStorage.setItem("USERscore", userScore);
   localStorage.setItem("CPUscore", cpuScore);
-  localStorage.setItem("History",)
+  localStorage.setItem("GAMEstate", gamesPlayed);
 
 
 } else {
