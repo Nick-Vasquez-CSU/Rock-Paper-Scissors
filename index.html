@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="/newtitles/output.css">
 </head>
 
-<body class="px-6 md:px-24 xl:px-52" style="background-color: grey;">
+<body class="px-6 md:px-24 xl:px-52">
   <!-- Round and score counters in top left corner -->
-  <div id= "gameTitle">
+  <div class="border-8 border-black p-3" id= "gameTitle">
     <h1 class="titleTEXT1 mt-6 p-6 text-center text-4xl font-bold">Rock, Paper, Scissors</h1>
+  </div>
+
+  <div class="border-8 border-black p-4" id="scoreBox">
     <h3 class="text-xl font-semibold">Round <span id="roundNumber"></span></h3>
     <h3 class="titleTEXT2 text-xl">Current Score</h3>
-    <h4 class="scoreTEXT text-xl" style="color: blue;">User: <span id="userText"></span></h4>
-    <h4 class="scoreTEXT text-xl" style = "color: red;">CPU: <span id="cpuText"></span></h4>
-  </div> 
+    <h4 class="scoreTEXT text-xl text-blue-500">User: <span id="userText"></span></h4>
+    <h4 class="scoreTEXT text-xl text-red-500">CPU: <span id="cpuText"></span></h4>
+  </div>
 
   <!-- Rock paper scissors images -->
   <h4 class="flex justify-center items-center text-xl mt-5">Make your selection by clicking below!</h4>
@@ -38,10 +41,10 @@
 
   <!-- Game history -->
   <div id= "gameHistory">
-    <h2 class="footTEXT1 text-lg" style="color: orange ;">History: </h2>
+    <h2 class="footTEXT1 text-lg text-yellow-600">History: </h2>
   </div>
 
-  <main>
+  <main class="border-8 border-black p-4 divide-y-4">
     <!-- Inside main is where history will be generated -->
   </main>
   <script type="module" src="game.js"></script>
