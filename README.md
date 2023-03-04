@@ -1,10 +1,10 @@
 ### Rock, Paper, Scissors in Browser
 | Group             |
 |-------------------|
-| Stephanie Pocci   |
+| Jose Gutierrez    |
 | Emmanuel Salcedo  |
 | Nick Vasquez      |
-| Ramiro Aispuro    |
+| Parker Martel     |
 
 ![Screenshot](md.PNG)
 ##### WHAT WE LEARNED
