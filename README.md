@@ -6,7 +6,7 @@
 | Nick Vasquez      |
 | Ramiro Aispuro    |
 
-![Screenshot](md.png)
+![Screenshot](md.PNG)
 ##### WHAT WE LEARNED
 *
 *
